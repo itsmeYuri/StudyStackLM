@@ -1,0 +1,14 @@
+"use client";
+
+import Link from "next/link";
+import { Bell, BookOpen, Files, Gauge, Layers3, Plus, Settings, Sparkles, Users } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Logo } from "@/components/logo";
+import { initials } from "@/lib/utils";
+
+export function AppShell({ children, user }: { children: React.ReactNode; user?: { email?: string; name?: string } }) {
+  const pathname = usePathname();
+  const name = user?.name || "Demo Student";
+  const active = (href: string) => href === "/app" ? pathname === href : pathname.startsWith(href);
+  return <div className="app-shell"><aside className="group-rail"><Logo compact/><div className="rail-groups"><button className="rail-group active" aria-label="Biology group">BIO</button><button className="rail-group" aria-label="Add group"><Plus size={18}/></button></div><Link href="/app/settings" className="rail-bottom" aria-label="Settings"><Settings size={20}/></Link></aside><aside className="context-nav"><Logo/><h2>Your workspace</h2><nav><Link className={active("/app") ? "active" : ""} href="/app"><Gauge size={18}/>Overview</Link><Link className={active("/app/groups/demo-biology") && !/\/(sources|library|generate)/.test(pathname) ? "active" : ""} href="/app/groups/demo-biology"><Users size={18}/>Study groups</Link><Link className={active("/app/groups/demo-biology/sources") ? "active" : ""} href="/app/groups/demo-biology/sources"><Files size={18}/>Sources</Link><Link className={active("/app/groups/demo-biology/library") ? "active" : ""} href="/app/groups/demo-biology/library"><Layers3 size={18}/>Study library</Link><Link className={active("/app/groups/demo-biology/generate") ? "active" : ""} href="/app/groups/demo-biology/generate"><Sparkles size={18}/>Generate</Link></nav><div className="user-chip"><span className="avatar">{initials(name)}</span><div><strong>{name}</strong><span>{user?.email || "demo@studystacklm.app"}</span></div></div></aside><main className="app-main"><div className="app-topbar"><div><span className="badge badge-blue">Biology 11</span><span className="badge badge-neutral">18 members</span>{!user && <span className="badge badge-coral">Demo data</span>}</div><button className="button button-quiet" aria-label="Notifications"><Bell size={19}/></button></div>{children}</main><nav className="mobile-nav" aria-label="Mobile navigation"><Link className={active("/app") ? "active" : ""} href="/app"><Gauge size={19}/>Home</Link><Link className={active("/app/groups/demo-biology/sources") ? "active" : ""} href="/app/groups/demo-biology/sources"><Files size={19}/>Sources</Link><Link className={active("/app/groups/demo-biology/generate") ? "active" : ""} href="/app/groups/demo-biology/generate"><Sparkles size={19}/>Create</Link><Link className={active("/app/groups/demo-biology/library") ? "active" : ""} href="/app/groups/demo-biology/library"><BookOpen size={19}/>Library</Link></nav></div>;
+}

@@ -1,0 +1,2 @@
+import { GenerationWizard } from "@/components/generation-wizard";
+export default async function GeneratePage({ params }: { params: Promise<{ groupId: string }> }) { const { groupId } = await params; return <><div className="page-heading"><div><h1 className="display">Build a study stack</h1><p>Choose what to study and how you want to practice. Every generated item will point back to its source.</p></div></div><GenerationWizard groupId={groupId}/></>; }

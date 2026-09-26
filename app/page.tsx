@@ -1,0 +1,19 @@
+import Link from "next/link";
+import { ArrowRight, BookOpen, Check, FileUp, Layers3, Users } from "lucide-react";
+import { Logo } from "@/components/logo";
+
+export default function Home() {
+  return <main className="landing">
+    <header className="landing-nav container"><Logo /><nav aria-label="Main navigation"><a href="#how">How it works</a><a href="#formats">Study formats</a><Link href="/login">Sign in</Link><Link className="button button-primary" href="/signup">Start a study group</Link></nav></header>
+    <section className="hero container">
+      <div className="hero-copy"><h1 className="display">One lesson.<br/><em>A whole stack</em> of ways to study.</h1><p>Upload your class slides once. StudyStackLM turns them into cited reviewers, flashcards, slide decks, and practice tests your entire group can use.</p><div className="hero-actions"><Link className="button button-primary" href="/signup">Create your group <ArrowRight size={18}/></Link><Link className="button button-secondary" href="/app">Explore the demo</Link></div><small><Check size={15}/> Every answer links back to the lesson.</small></div>
+      <div className="stack-demo" aria-label="Example lesson transformed into study materials">
+        <div className="source-sheet"><span className="sheet-tab">SOURCE · 01</span><div className="file-line"><FileUp size={20}/><div><strong>Cell Transport.pptx</strong><span>34 slides · Ready</span></div></div><h2 className="display">The plasma membrane</h2><p>Selective permeability helps cells maintain a stable internal environment.</p><div className="highlight">Water crosses the membrane through osmosis.</div><span className="page-number">08</span></div>
+        <div className="quiz-sheet"><span className="sheet-tab coral">PRACTICE</span><span className="question-count">Question 3 of 12</span><h3>Which process moves water across a selectively permeable membrane?</h3><div className="choice">A <span>Active transport</span></div><div className="choice selected">B <span>Osmosis</span></div><div className="choice">C <span>Endocytosis</span></div><a href="#how">Cell Transport · slide 8</a></div>
+      </div>
+    </section>
+    <section id="how" className="mechanism"><div className="container"><h2 className="display">From class file to study session.</h2><div className="mechanism-grid"><article><FileUp/><strong>Bring the lesson</strong><p>Add PPTX, PDF, DOCX, or your own reviewer. Slide and page boundaries stay intact.</p></article><article><Layers3/><strong>Build the stack</strong><p>Choose a format, difficulty, coverage, and question mix. Review the draft before sharing.</p></article><article><Users/><strong>Study together</strong><p>Everyone uses the shared material while attempts, scores, and progress remain personal.</p></article></div></div></section>
+    <section id="formats" className="formats container"><div><h2 className="display">The right format for what you need next.</h2><p>A fast recall session, a thorough review, or a realistic practice test—all grounded in the same source.</p></div><div className="format-list"><div><span>Reviewers</span><small>Clear explanations and key ideas</small></div><div><span>Flashcards</span><small>Active recall with spaced practice</small></div><div><span>Quizzes</span><small>Multiple choice, T/F, blanks, enumeration</small></div><div><span>Slide decks</span><small>A focused version of the lesson</small></div></div></section>
+    <footer className="container"><Logo/><p>Study together. Know where every answer came from.</p><BookOpen size={22}/></footer>
+  </main>;
+}

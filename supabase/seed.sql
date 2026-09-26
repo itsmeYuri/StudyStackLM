@@ -1,0 +1,1 @@
+-- Add development-only fixtures here after creating users through Supabase Auth.

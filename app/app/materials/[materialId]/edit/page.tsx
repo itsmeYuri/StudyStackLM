@@ -1,0 +1,2 @@
+import { MaterialEditor } from "@/components/material-editor";
+export default async function EditMaterial({ params }: { params: Promise<{ materialId: string }> }) { const { materialId } = await params; return <><div className="page-heading"><div><h1 className="display">Review the draft</h1><p>AI created the structure. You decide what is accurate and ready for your group.</p></div></div><MaterialEditor materialId={materialId}/></>; }

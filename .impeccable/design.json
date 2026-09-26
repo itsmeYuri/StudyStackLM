@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T02:56:43.1563132+08:00",
+  "title": "Design System: StudyStackLM",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Desk Paper",
+        "canonical": "#F5F1E8",
+        "tonalRamp": ["oklch(15% 0.018 86)", "oklch(27% 0.018 86)", "oklch(39% 0.018 86)", "oklch(51% 0.018 86)", "oklch(63% 0.018 86)", "oklch(75% 0.018 86)", "oklch(87% 0.018 86)", "oklch(95% 0.018 86)"]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Fresh Sheet",
+        "canonical": "#FFFDF8",
+        "tonalRamp": ["oklch(15% 0.009 88)", "oklch(27% 0.009 88)", "oklch(39% 0.009 88)", "oklch(51% 0.009 88)", "oklch(63% 0.009 88)", "oklch(75% 0.009 88)", "oklch(87% 0.009 88)", "oklch(95% 0.009 88)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ledger Ink",
+        "canonical": "#172033",
+        "tonalRamp": ["oklch(15% 0.038 260)", "oklch(27% 0.038 260)", "oklch(39% 0.038 260)", "oklch(51% 0.038 260)", "oklch(63% 0.038 260)", "oklch(75% 0.038 260)", "oklch(87% 0.038 260)", "oklch(95% 0.038 260)"]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Pencil Note",
+        "canonical": "#596273",
+        "tonalRamp": ["oklch(15% 0.026 258)", "oklch(27% 0.026 258)", "oklch(39% 0.026 258)", "oklch(51% 0.026 258)", "oklch(63% 0.026 258)", "oklch(75% 0.026 258)", "oklch(87% 0.026 258)", "oklch(95% 0.026 258)"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Faint Rule",
+        "canonical": "#D9D3C7",
+        "tonalRamp": ["oklch(15% 0.016 82)", "oklch(27% 0.016 82)", "oklch(39% 0.016 82)", "oklch(51% 0.016 82)", "oklch(63% 0.016 82)", "oklch(75% 0.016 82)", "oklch(87% 0.016 82)", "oklch(95% 0.016 82)"]
+      },
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Cobalt Ink",
+        "canonical": "#275DFF",
+        "tonalRamp": ["oklch(15% 0.21 264)", "oklch(27% 0.21 264)", "oklch(39% 0.21 264)", "oklch(51% 0.21 264)", "oklch(63% 0.21 264)", "oklch(75% 0.21 264)", "oklch(87% 0.21 264)", "oklch(95% 0.21 264)"]
+      },
+      "cobalt-dark": {
+        "role": "primary",
+        "displayName": "Deep Cobalt",
+        "canonical": "#1744CE",
+        "tonalRamp": ["oklch(15% 0.19 264)", "oklch(27% 0.19 264)", "oklch(39% 0.19 264)", "oklch(51% 0.19 264)", "oklch(63% 0.19 264)", "oklch(75% 0.19 264)", "oklch(87% 0.19 264)", "oklch(95% 0.19 264)"]
+      },
+      "coral": {
+        "role": "secondary",
+        "displayName": "Coral Highlighter",
+        "canonical": "#FF6B57",
+        "tonalRamp": ["oklch(15% 0.16 31)", "oklch(27% 0.16 31)", "oklch(39% 0.16 31)", "oklch(51% 0.16 31)", "oklch(63% 0.16 31)", "oklch(75% 0.16 31)", "oklch(87% 0.16 31)", "oklch(95% 0.16 31)"]
+      },
+      "mint": {
+        "role": "tertiary",
+        "displayName": "Verified Mint",
+        "canonical": "#B9E6D3",
+        "tonalRamp": ["oklch(15% 0.065 163)", "oklch(27% 0.065 163)", "oklch(39% 0.065 163)", "oklch(51% 0.065 163)", "oklch(63% 0.065 163)", "oklch(75% 0.065 163)", "oklch(87% 0.065 163)", "oklch(95% 0.065 163)"]
+      },
+      "quiet-fill": {
+        "role": "neutral",
+        "displayName": "Quiet Fill",
+        "canonical": "#F1EEE6",
+        "tonalRamp": ["oklch(15% 0.013 85)", "oklch(27% 0.013 85)", "oklch(39% 0.013 85)", "oklch(51% 0.013 85)", "oklch(63% 0.013 85)", "oklch(75% 0.013 85)", "oklch(87% 0.013 85)", "oklch(95% 0.013 85)"]
+      },
+      "blue-wash": {
+        "role": "primary",
+        "displayName": "Blue Wash",
+        "canonical": "#DFE6FF",
+        "tonalRamp": ["oklch(15% 0.055 266)", "oklch(27% 0.055 266)", "oklch(39% 0.055 266)", "oklch(51% 0.055 266)", "oklch(63% 0.055 266)", "oklch(75% 0.055 266)", "oklch(87% 0.055 266)", "oklch(95% 0.055 266)"]
+      },
+      "highlight": {
+        "role": "tertiary",
+        "displayName": "Study Highlight",
+        "canonical": "#FFE49A",
+        "tonalRamp": ["oklch(15% 0.11 88)", "oklch(27% 0.11 88)", "oklch(39% 0.11 88)", "oklch(51% 0.11 88)", "oklch(63% 0.11 88)", "oklch(75% 0.11 88)", "oklch(87% 0.11 88)", "oklch(95% 0.11 88)"]
+      },
+      "danger": {
+        "role": "secondary",
+        "displayName": "Red Pen",
+        "canonical": "#D4382C",
+        "tonalRamp": ["oklch(15% 0.18 30)", "oklch(27% 0.18 30)", "oklch(39% 0.18 30)", "oklch(51% 0.18 30)", "oklch(63% 0.18 30)", "oklch(75% 0.18 30)", "oklch(87% 0.18 30)", "oklch(95% 0.18 30)"]
+      },
+      "success-fill": {
+        "role": "tertiary",
+        "displayName": "Correct Wash",
+        "canonical": "#DFF4EA",
+        "tonalRamp": ["oklch(15% 0.045 158)", "oklch(27% 0.045 158)", "oklch(39% 0.045 158)", "oklch(51% 0.045 158)", "oklch(63% 0.045 158)", "oklch(75% 0.045 158)", "oklch(87% 0.045 158)", "oklch(95% 0.045 158)"]
+      },
+      "error-fill": {
+        "role": "secondary",
+        "displayName": "Correction Wash",
+        "canonical": "#FFE1DC",
+        "tonalRamp": ["oklch(15% 0.048 28)", "oklch(27% 0.048 28)", "oklch(39% 0.048 28)", "oklch(51% 0.048 28)", "oklch(63% 0.048 28)", "oklch(75% 0.048 28)", "oklch(87% 0.048 28)", "oklch(95% 0.048 28)"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(27% 0 0)", "oklch(39% 0 0)", "oklch(51% 0 0)", "oklch(63% 0 0)", "oklch(75% 0 0)", "oklch(87% 0 0)", "oklch(95% 0 0)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page headings and primary study prompts." },
+      "headline": { "displayName": "Headline", "purpose": "Panel headings, section introductions, and editor titles." },
+      "title": { "displayName": "Title", "purpose": "Material titles and compact editorial moments." },
+      "body": { "displayName": "Body", "purpose": "Explanations, instructions, and long-form study content." },
+      "label": { "displayName": "Label", "purpose": "Field labels, badges, metadata, and status copy." },
+      "control": { "displayName": "Control", "purpose": "Buttons and navigation actions." }
+    },
+    "shadows": [
+      { "name": "paper-lift", "value": "0 16px 38px rgba(34, 40, 52, .12)", "purpose": "Default raised sheet and panel." },
+      { "name": "primary-action", "value": "0 8px 18px rgba(39, 93, 255, .22)", "purpose": "Cobalt primary buttons." },
+      { "name": "secondary-action", "value": "0 7px 16px rgba(34, 40, 52, .10)", "purpose": "Fresh Sheet secondary buttons." },
+      { "name": "navigation-lift", "value": "0 5px 13px rgba(30, 35, 45, .08)", "purpose": "Active or hovered contextual navigation." },
+      { "name": "hero-stack", "value": "0 24px 50px rgba(30, 35, 45, .16)", "purpose": "Oversized overlapping lesson and practice sheets." },
+      { "name": "drawer-edge", "value": "-18px 0 42px rgba(23, 32, 51, .20)", "purpose": "Desktop citation drawer separation." },
+      { "name": "mobile-dock", "value": "0 13px 28px rgba(0, 0, 0, .25)", "purpose": "Fixed mobile navigation dock." }
+    ],
+    "motion": [
+      { "name": "control-state", "value": "180ms ease", "purpose": "Button lift and color transitions." },
+      { "name": "row-shift", "value": "180ms ease", "purpose": "Short directional movement for library rows." },
+      { "name": "surface-lift", "value": "200ms ease", "purpose": "Hover lift for complete paper surfaces." },
+      { "name": "citation-enter", "value": "240ms cubic-bezier(.2, .8, .2, 1)", "purpose": "Citation drawer entrance from the relevant screen edge." },
+      { "name": "reduced-motion", "value": "0.01ms", "purpose": "Near-instant state change when reduced motion is requested." }
+    ],
+    "breakpoints": [
+      { "name": "landing-mobile", "value": "520px" },
+      { "name": "app-mobile", "value": "680px" },
+      { "name": "auth-mobile", "value": "760px" },
+      { "name": "landing-stack", "value": "800px" },
+      { "name": "work-columns", "value": "900px" },
+      { "name": "context-collapse", "value": "980px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The next meaningful action in a study workflow.",
+      "html": "<button class=\"ds-btn-primary\">Generate draft</button>",
+      "css": ".ds-btn-primary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--cobalt); color: #fff; font-family: var(--font-manrope), Arial, sans-serif; font-size: 14px; font-weight: 750; box-shadow: 0 8px 18px rgba(39, 93, 255, .22); cursor: pointer; transition: transform .18s ease, background .18s ease; } .ds-btn-primary:hover { background: var(--cobalt-dark); transform: translateY(-1px); } .ds-btn-primary:active { transform: translateY(0); } .ds-btn-primary:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A supporting action that stays visually behind the primary path.",
+      "html": "<button class=\"ds-btn-secondary\">Save draft</button>",
+      "css": ".ds-btn-secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 18px; border: 0; border-radius: 10px; background: var(--sheet); color: var(--ink); font-family: var(--font-manrope), Arial, sans-serif; font-size: 14px; font-weight: 750; box-shadow: 0 7px 16px rgba(34, 40, 52, .10); cursor: pointer; transition: transform .18s ease, background .18s ease; } .ds-btn-secondary:hover { background: #f1eee6; transform: translateY(-1px); } .ds-btn-secondary:active { transform: translateY(0); } .ds-btn-secondary:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "The standard field for group, source, and material editing.",
+      "html": "<label class=\"ds-field\"><span>Material title</span><input value=\"Cell Transport Practice\" /></label>",
+      "css": ".ds-field { display: grid; gap: 7px; color: var(--ink); font-family: var(--font-manrope), Arial, sans-serif; } .ds-field span { font-size: 13px; font-weight: 800; } .ds-field input { width: 100%; min-height: 45px; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); padding: 10px 12px; font: inherit; } .ds-field input:hover { border-color: #b9b3a8; } .ds-field input:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ready Badge",
+      "kind": "chip",
+      "refersTo": "badge-ready",
+      "description": "A compact, labeled confirmation for sources and completed states.",
+      "html": "<span class=\"ds-badge-ready\">Ready</span>",
+      "css": ".ds-badge-ready { min-height: 25px; display: inline-flex; align-items: center; width: max-content; padding: 2px 9px; border-radius: 999px; background: var(--mint); color: #155c43; font-family: var(--font-manrope), Arial, sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .015em; }"
+    },
+    {
+      "name": "Context Navigation Item",
+      "kind": "nav",
+      "description": "A labeled location inside the current study group.",
+      "html": "<a class=\"ds-nav-item ds-nav-item-active\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20V5H6.5A2.5 2.5 0 0 0 4 7.5v12Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg><span>Study library</span></a>",
+      "css": ".ds-nav-item { display: flex; align-items: center; gap: 11px; padding: 11px 12px; border-radius: 10px; background: transparent; color: #555f70; font-family: var(--font-manrope), Arial, sans-serif; font-size: 14px; font-weight: 730; text-decoration: none; transition: background .18s ease, color .18s ease, transform .18s ease; } .ds-nav-item:hover, .ds-nav-item-active { color: var(--ink); background: var(--sheet); box-shadow: 0 5px 13px rgba(30, 35, 45, .08); } .ds-nav-item:active { transform: translateY(1px); } .ds-nav-item:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }"
+    },
+    {
+      "name": "Paper Panel",
+      "kind": "card",
+      "refersTo": "paper-panel",
+      "description": "A raised working sheet for summaries, editors, and focused study content.",
+      "html": "<article class=\"ds-paper-panel\"><span class=\"ds-paper-label\">CURRENT STACK</span><h3>Cell Transport Practice</h3><p>12 questions grounded in two ready sources.</p></article>",
+      "css": ".ds-paper-panel { max-width: 360px; padding: 24px; border-radius: 14px; background: var(--sheet); color: var(--ink); box-shadow: 0 16px 38px rgba(34, 40, 52, .12); font-family: var(--font-manrope), Arial, sans-serif; transition: transform .2s ease; } .ds-paper-panel:hover { transform: translateY(-3px); } .ds-paper-panel:focus-within { outline: 3px solid var(--cobalt); outline-offset: 3px; } .ds-paper-panel h3 { margin: 30px 0 8px; font-family: var(--font-fraunces), Georgia, serif; font-size: 25px; font-weight: 650; letter-spacing: -.025em; } .ds-paper-panel p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; } .ds-paper-label { color: var(--cobalt); font-size: 11px; font-weight: 900; letter-spacing: .08em; }"
+    },
+    {
+      "name": "Citation Chip",
+      "kind": "chip",
+      "description": "An inline source reference that opens the neighboring lesson excerpt.",
+      "html": "<button class=\"ds-citation-chip\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" aria-hidden=\"true\"><path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20V5H6.5A2.5 2.5 0 0 0 4 7.5v12Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>Cell Transport · slide 8</button>",
+      "css": ".ds-citation-chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border: 0; border-radius: 999px; background: #dfe6ff; color: #183f9f; font-family: var(--font-manrope), Arial, sans-serif; font-size: 12px; font-weight: 800; cursor: pointer; transition: background .18s ease, transform .18s ease; } .ds-citation-chip:hover { background: #cdd8ff; transform: translateY(-1px); } .ds-citation-chip:active { transform: translateY(0); } .ds-citation-chip:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }"
+    },
+    {
+      "name": "Selected Answer Option",
+      "kind": "custom",
+      "description": "A quiz choice whose fill and inset stroke make selection explicit.",
+      "html": "<button class=\"ds-answer-option ds-answer-selected\"><span>B</span>Osmosis</button>",
+      "css": ".ds-answer-option { width: 100%; min-height: 62px; display: flex; align-items: center; gap: 12px; border: 0; border-radius: 11px; background: #f1eee6; color: var(--ink); padding: 10px 18px; text-align: left; font-family: var(--font-manrope), Arial, sans-serif; font-size: 15px; font-weight: 680; cursor: pointer; transition: background .18s ease, transform .18s ease; } .ds-answer-option span { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--sheet); font-weight: 800; } .ds-answer-option:hover { transform: translateY(-1px); } .ds-answer-option:active { transform: translateY(0); } .ds-answer-option:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; } .ds-answer-selected { background: #dfe6ff; box-shadow: inset 0 0 0 2px var(--cobalt); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cited Study Ledger",
+    "overview": "StudyStackLM feels like a shared study desk prepared before a focused session: warm paper, precisely ruled sheets, stacked lesson pages, clear tabs, and confident ink. Its editorial asymmetry gives source material and generated study objects distinct physical presence while the interface remains fast to scan and easy to operate.\n\nThe visual system makes provenance tangible. Cobalt links actions and citations, coral flags attention and draft states, mint confirms ready or correct states, and ruled lines connect study content to its source. The result should feel academically responsible and encouraging, with the warmth of a notebook and the order of a ledger.",
+    "keyCharacteristics": [
+      "Warm paper canvas with brighter working sheets.",
+      "Fraunces-led editorial hierarchy paired with compact Manrope controls.",
+      "Asymmetric stacks, source tabs, ruled backgrounds, and restrained rotations.",
+      "Cobalt actions, coral attention, and mint verification with text or icons reinforcing every state.",
+      "Dense study tools framed by quiet margins and one dominant work area."
+    ],
+    "rules": [
+      { "name": "The Ink Economy Rule", "body": "Use cobalt for action, location, progress, and provenance; coral for attention; mint for verified or correct states. Their meaning depends on restraint.", "section": "colors" },
+      { "name": "The Evidence Rule", "body": "Never communicate correctness, error, readiness, or selection through color alone; pair color with direct copy, an icon, a border, or a state label.", "section": "colors" },
+      { "name": "The Two-Hand Rule", "body": "Fraunces carries the lesson and the question; Manrope carries the interface around them.", "section": "typography" },
+      { "name": "The Study-Text Rule", "body": "Reading surfaces get generous line-height and controlled measure, while controls remain compact and weight-forward.", "section": "typography" },
+      { "name": "The Quiet Margin Rule", "body": "Dense controls may sit close together inside the active object, but the active object itself must retain clear space from navigation and neighboring work.", "section": "layout" },
+      { "name": "The Soft-Lift Rule", "body": "Raise complete sheets and active navigation; keep lists and controls flat until interaction gives them a reason to move.", "section": "elevation" },
+      { "name": "The Ledger Shape Rule", "body": "Rounded rectangles should read as sheets, controls, or status labels; do not turn the interface into a field of interchangeable cards.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep source references visible and open them without making the student lose their place.",
+      "Do use one dominant work area with supporting columns, quiet margins, and clear row structure.",
+      "Do reserve cobalt for action, navigation, progress, and provenance; reserve coral and mint for their established meanings.",
+      "Do pair every status color with explicit copy, an icon, a border, or a label.",
+      "Do preserve 44px minimum targets, visible focus, keyboard flow, and reduced-motion behavior.",
+      "Do use Fraunces for lesson authority and Manrope for operational clarity."
+    ],
+    "donts": [
+      "Don't replace the study ledger with a uniform dashboard of interchangeable cards.",
+      "Don't add glassy halos, heavy outlines, or decorative shadows that compete with the paper stack.",
+      "Don't use coral or mint as arbitrary decoration; their semantic meaning must remain stable.",
+      "Don't rotate ordinary panels; rotations belong to literal stacks of lesson or material sheets.",
+      "Don't hide navigation labels on mobile or make a state legible only by color."
+    ]
+  }
+}
