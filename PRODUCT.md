@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Delegated from the user's deployment constraints: Next.js with TypeScript on Vercel, Supabase for authentication, PostgreSQL, Storage, Realtime, and Row Level Security, and the OpenAI API for extraction-assisted generation and structured study materials.
+Delegated from the user's deployment constraints: Next.js with TypeScript on Vercel, Supabase for authentication, PostgreSQL, Storage, Realtime, and Row Level Security, and the Gemini API for extraction-assisted generation and structured study materials.
 
 ## Users
 
@@ -51,7 +51,7 @@ Assumptions made because structured product questions were unavailable:
 
 - The first release is student-led and does not include teacher gradebooks or institution administration.
 - Shared quizzes use individual attempts; synchronized live quiz rooms are deferred.
-- OpenAI is the initial AI provider, accessed only from server-side code.
+- Google Gemini is the AI provider, using a model available on the Gemini API free tier and accessed only from server-side code.
 - Uploaded source limits begin at 25 MB per file and 200 pages/slides per source, then are adjusted using production usage data.
 - Generated content requires creator review before group publication.
 - Group roles are owner, moderator, and member.
@@ -59,7 +59,7 @@ Assumptions made because structured product questions were unavailable:
 
 Technical constraints:
 
-- Never expose the OpenAI key or Supabase service-role key to the browser.
+- Never expose the Gemini key or Supabase service-role key to the browser.
 - Enforce all group and user data access with Supabase Row Level Security.
 - Treat uploaded files and extracted content as untrusted input.
 - Run long document processing and generation as durable background jobs rather than depending on one browser request.

@@ -1,9 +1,9 @@
 .app-shell { min-height: 100vh; display: grid; grid-template-columns: 76px 240px 1fr; }
-.group-rail { position: sticky; top: 0; height: 100vh; background: var(--ink); color: white; padding: 22px 14px; display: flex; flex-direction: column; align-items: center; gap: 17px; }
+.group-rail { position: sticky; top: 0; height: 100vh; background: #4a2038; color: white; padding: 22px 14px; display: flex; flex-direction: column; align-items: center; gap: 17px; }
 .group-rail .logo-mark i:last-child { background: white; }
 .rail-groups { display: grid; gap: 10px; margin-top: 10px; }
-.rail-group { width: 44px; height: 44px; border: 0; border-radius: 13px; background: #343d50; color: white; font-size: 13px; font-weight: 900; }
-.rail-group.active { background: var(--coral); color: #28110d; }
+.rail-group { width: 44px; height: 44px; border: 0; border-radius: 13px; background: #72304f; color: white; font-size: 13px; font-weight: 900; display: grid; place-items: center; }
+.rail-group.active { background: #f7a8c9; color: #4a2038; }
 .rail-bottom { margin-top: auto; }
 .context-nav { position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--rule); padding: 28px 20px; background: rgba(245,241,232,.82); backdrop-filter: blur(10px); }
 .context-nav h2 { font: 650 22px var(--font-fraunces), serif; margin: 40px 10px 16px; }

@@ -11,6 +11,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@google/genai": "^2.24.0",
     "@hookform/resolvers": "latest",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
@@ -18,7 +19,6 @@
     "lucide-react": "latest",
     "next": "latest",
     "officeparser": "^8.0.0",
-    "openai": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "latest",

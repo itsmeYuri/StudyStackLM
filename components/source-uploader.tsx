@@ -12,7 +12,6 @@ export function SourceUploader({ groupId }: { groupId: string }) {
     if (file.size > 25 * 1024 * 1024) { setStatus("error"); setMessage("Choose a file smaller than 25 MB."); return; }
     setStatus("uploading"); setMessage("Uploading and preparing the lesson…");
     try {
-      if (groupId === "demo-biology" || !process.env.NEXT_PUBLIC_SUPABASE_URL) { await new Promise((r) => setTimeout(r, 900)); setStatus("done"); setMessage(`${file.name} is ready in demo mode.`); return; }
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("Sign in before uploading.");

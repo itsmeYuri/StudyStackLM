@@ -1,0 +1,5 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { createClient } from "@/lib/supabase/server";
+const schema = z.object({ materialId: z.string().uuid(), answers: z.record(z.string(), z.string()), score: z.number().nonnegative(), maxScore: z.number().positive() });
+export async function POST(request: Request) { try { const input = schema.parse(await request.json()); const supabase = await createClient(); if (!supabase) return NextResponse.json({ error: "Supabase unavailable" }, { status: 503 }); const { data: { user } } = await supabase.auth.getUser(); if (!user) return NextResponse.json({ error: "Authentication required" }, { status: 401 }); const { error } = await supabase.from("attempts").insert({ material_id: input.materialId, user_id: user.id, status: "submitted", answers: input.answers, score: input.score, max_score: input.maxScore, submitted_at: new Date().toISOString() }); if (error) throw error; return NextResponse.json({ ok: true }); } catch (error) { return NextResponse.json({ error: error instanceof Error ? error.message : "Could not save attempt" }, { status: 400 }); } }

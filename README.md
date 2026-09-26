@@ -5,7 +5,7 @@ StudyStackLM is a collaborative study workspace that turns shared class lessons 
 ## Local setup
 
 1. Install dependencies with `npm install`.
-2. Copy `.env.example` to `.env.local` and add Supabase and OpenAI credentials.
+2. Copy `.env.example` to `.env.local` and add Supabase credentials plus a Gemini API key from Google AI Studio.
 3. Start Supabase locally with `npx supabase start` or link a hosted project.
 4. Apply migrations with `npx supabase db reset` locally or `npx supabase db push` when linked.
 5. Start the app with `npm run dev`.

@@ -1,5 +1,5 @@
 .auth-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
-.auth-aside { background: var(--ink); color: white; padding: 46px; display: flex; flex-direction: column; justify-content: space-between; }
+.auth-aside { background: linear-gradient(155deg, #4a2038, #9b3568); color: white; padding: 46px; display: flex; flex-direction: column; justify-content: space-between; }
 .auth-aside .logo-mark i:last-child { background: white; }
 .auth-quote { max-width: 560px; }
 .auth-quote blockquote { margin: 0; font: 500 clamp(38px, 5vw, 67px)/1.02 var(--font-fraunces), serif; }
@@ -12,5 +12,5 @@
 .auth-form .button { width: 100%; }
 .auth-switch { text-align: center; margin-top: 22px; font-size: 14px; color: var(--muted); }
 .auth-switch a { color: var(--cobalt); font-weight: 800; }
-.auth-error { padding: 11px; background: #ffe0da; color: #8e291e; border-radius: 8px; font-size: 13px; }
+.auth-error { padding: 11px; background: #ffe0eb; color: #8e2859; border-radius: 8px; font-size: 13px; }
 @media (max-width: 760px) { .auth-page { grid-template-columns: 1fr; } .auth-aside { display: none; } .auth-main { padding: 28px 20px; } }

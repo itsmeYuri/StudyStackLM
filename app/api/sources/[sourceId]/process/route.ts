@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { OfficeParser } from "officeparser";
-import OpenAI from "openai";
+import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
 
 function splitText(text: string, maxLength = 2200) {
@@ -32,7 +32,15 @@ export async function POST(_: Request, { params }: { params: Promise<{ sourceId:
     const chunks = splitText(generated.value);
     if (!chunks.length) throw new Error("No readable text was found in this file.");
     let embeddings: number[][] = chunks.map(() => []);
-    if (process.env.OPENAI_API_KEY) { const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY }); const result = await openai.embeddings.create({ model: process.env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small", input: chunks }); embeddings = result.data.map((item) => item.embedding); }
+    if (process.env.GEMINI_API_KEY) {
+      const gemini = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const result = await gemini.models.embedContent({ model: process.env.GEMINI_EMBEDDING_MODEL || "gemini-embedding-001", contents: chunks, config: { outputDimensionality: 1536 } });
+      embeddings = (result.embeddings || []).map((item) => {
+        const values = item.values || [];
+        const magnitude = Math.sqrt(values.reduce((sum, value) => sum + value * value, 0)) || 1;
+        return values.map((value) => value / magnitude);
+      });
+    }
     const rows = chunks.map((content, index) => ({ source_id: sourceId, page_number: index + 1, chunk_index: 0, content, token_count: Math.ceil(content.length / 4), embedding: embeddings[index].length ? embeddings[index] : null, metadata: { extractedFrom: extension } }));
     const { error: chunkError } = await admin.from("source_chunks").insert(rows); if (chunkError) throw chunkError;
     await admin.from("sources").update({ status: "ready", page_count: chunks.length }).eq("id", sourceId);

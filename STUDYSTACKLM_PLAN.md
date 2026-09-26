@@ -63,14 +63,14 @@ The first release should prove one promise: a group can upload a real lesson and
 | Database | Supabase PostgreSQL | Relational model, transactions, full-text search, vector support, and RLS |
 | File storage | Supabase Storage | Private buckets and signed access URLs |
 | Realtime | Supabase Realtime | Job progress and group activity updates |
-| AI | OpenAI Responses API with structured outputs | Reliable typed generation and source-grounded outputs |
-| Embeddings | OpenAI embeddings + pgvector | Semantic retrieval over uploaded source chunks |
+| AI | Google Gemini API with structured outputs | Free-tier generation with typed, source-grounded outputs |
+| Embeddings | Gemini Embedding + pgvector | Semantic retrieval over uploaded source chunks |
 | Background jobs | Inngest or Trigger.dev | Durable processing outside Vercel request time limits |
 | Observability | Sentry + Vercel Analytics | Runtime errors, performance, and release visibility |
 | Product analytics | PostHog, added after consent design | Funnel and retention measurements |
 | Testing | Vitest, Testing Library, Playwright | Unit, integration, and critical end-to-end coverage |
 
-Keep AI access behind an internal interface such as `AIProvider`. The first implementation can use OpenAI while preserving a future provider swap without spreading provider-specific code through the product.
+Keep AI access behind an internal interface such as `AIProvider`. The implementation uses Gemini while preserving a future provider swap without spreading provider-specific code through the product.
 
 ## 4. System architecture
 
@@ -82,7 +82,7 @@ flowchart LR
     V --> S[Private Supabase Storage]
     V --> J[Background job service]
     J --> X[Document extraction]
-    X --> O[OpenAI API]
+    X --> O[Gemini API]
     O --> D
     J --> D
     D -. Realtime status .-> U
@@ -501,9 +501,9 @@ NEXT_PUBLIC_APP_URL
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY
-OPENAI_API_KEY
-OPENAI_GENERATION_MODEL
-OPENAI_EMBEDDING_MODEL
+GEMINI_API_KEY
+GEMINI_GENERATION_MODEL
+GEMINI_EMBEDDING_MODEL
 BACKGROUND_JOB_SIGNING_KEY
 SENTRY_DSN
 ```

@@ -1,19 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Check, GripVertical, Save } from "lucide-react";
 import type { GeneratedMaterial } from "@/lib/study-schema";
-import { demoQuestions } from "@/lib/demo-data";
 import { CitationDrawer } from "@/components/citation-drawer";
 
-export function MaterialEditor({ materialId }: { materialId: string }) {
+export function MaterialEditor({ materialId, initialMaterial, materialType }: { materialId: string; initialMaterial: GeneratedMaterial; materialType: string }) {
   const router = useRouter();
-  const [material, setMaterial] = useState<GeneratedMaterial>({ title: "Cell Transport Practice", description: "Generated from the selected lessons.", items: demoQuestions.map((q, i) => ({ ...q, acceptedAnswers: [], citation: { chunkId: `demo-${i}`, label: q.citation } })) as GeneratedMaterial["items"] });
+  const [material, setMaterial] = useState<GeneratedMaterial>(initialMaterial);
   const [saved, setSaved] = useState(false);
-  useEffect(() => { const stored = sessionStorage.getItem(`material:${materialId}`); if (stored) { // eslint-disable-next-line react-hooks/set-state-in-effect
-      setMaterial(JSON.parse(stored)); } }, [materialId]);
   function updateItem(index: number, key: "prompt" | "answer" | "explanation", value: string) { setMaterial((m) => ({ ...m, items: m.items.map((item, i) => i === index ? { ...item, [key]: value } : item) })); setSaved(false); }
-  async function save(publish = false) { sessionStorage.setItem(`material:${materialId}`, JSON.stringify(material)); await fetch(`/api/materials/${materialId}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ material, publish }) }); setSaved(true); if (publish) router.push(`/app/materials/${materialId}/${["quiz", "practice_test"].includes((material as GeneratedMaterial & { format?: string }).format || "quiz") ? "attempt" : "study"}`); }
+  async function save(publish = false) { const response = await fetch(`/api/materials/${materialId}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ material, publish }) }); if (!response.ok) throw new Error("Could not save material"); setSaved(true); if (publish) router.push(`/app/materials/${materialId}/${["quiz", "practice_test"].includes(materialType) ? "attempt" : "study"}`); }
   return <div className="editor-layout"><section><div className="editor-title"><input aria-label="Material title" value={material.title} onChange={(e) => setMaterial({ ...material, title: e.target.value })}/><textarea aria-label="Material description" value={material.description} onChange={(e) => setMaterial({ ...material, description: e.target.value })}/></div><div className="question-editor-list">{material.items.map((item, i) => <article key={i} className="paper-panel question-editor"><header><GripVertical/><span className="badge badge-neutral">{item.type.replaceAll("_", " ")}</span><strong>Question {i + 1}</strong></header><div className="field"><label htmlFor={`prompt-${i}`}>Prompt</label><textarea id={`prompt-${i}`} className="textarea" value={item.prompt} onChange={(e) => updateItem(i, "prompt", e.target.value)}/></div>{item.options.length > 0 && <div className="option-editor">{item.options.map((option, optionIndex) => <span className={option === item.answer ? "correct" : ""} key={optionIndex}>{String.fromCharCode(65 + optionIndex)} {option}{option === item.answer && <Check size={15}/>}</span>)}</div>}<div className="field"><label htmlFor={`answer-${i}`}>Correct answer</label><input id={`answer-${i}`} className="input" value={item.answer} onChange={(e) => updateItem(i, "answer", e.target.value)}/></div><div className="field"><label htmlFor={`explanation-${i}`}>Explanation</label><textarea id={`explanation-${i}`} className="textarea" value={item.explanation} onChange={(e) => updateItem(i, "explanation", e.target.value)}/></div><CitationDrawer label={item.citation.label} excerpt={item.explanation}/></article>)}</div></section><aside className="editor-actions paper-panel"><span className="badge badge-coral">AI-generated draft</span><h2 className="display">Review before sharing</h2><p>Check every answer and open the source citation when something looks unclear.</p><button onClick={() => save(false)} className="button button-secondary"><Save size={17}/>{saved ? "Saved" : "Save draft"}</button><button onClick={() => save(true)} className="button button-primary">Publish to group</button></aside></div>;
 }

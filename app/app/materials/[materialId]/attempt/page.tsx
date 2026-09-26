@@ -1,2 +1,5 @@
 import { QuizPlayer } from "@/components/quiz-player";
-export default async function Attempt({ params }: { params: Promise<{ materialId: string }> }) { const { materialId } = await params; return <QuizPlayer materialId={materialId}/>; }
+import { createClient } from "@/lib/supabase/server";
+import { generatedMaterial } from "@/lib/study-schema";
+import { notFound } from "next/navigation";
+export default async function Attempt({ params }: { params: Promise<{ materialId: string }> }) { const { materialId } = await params; const supabase = await createClient(); const { data } = await supabase!.from("materials").select("title,group_id,content,status").eq("id", materialId).eq("status", "published").single(); if (!data) notFound(); const material = generatedMaterial.parse(data.content); const questions = material.items.map((item, index) => ({ id: `${materialId}-${index}`, type: item.type, prompt: item.prompt, options: item.options, answer: item.answer, explanation: item.explanation, citation: item.citation.label, acceptedAnswers: item.acceptedAnswers })); return <QuizPlayer materialId={materialId} title={data.title} groupId={data.group_id} initialQuestions={questions}/>; }
