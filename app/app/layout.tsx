@@ -2,11 +2,14 @@ import "./app.css";
 import { AppFrame } from "@/components/app-frame";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import type { GroupSummary } from "@/lib/types";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   if (!supabase) redirect("/login?error=Supabase is not configured");
   const { data } = await supabase.auth.getUser();
   if (!data.user) redirect("/login");
-  return <AppFrame user={data.user ? { email: data.user.email, name: data.user.user_metadata?.display_name } : undefined}>{children}</AppFrame>;
+  const { data: memberships } = await supabase.from("group_members").select("role,joined_at,groups(id,name,subject,description,created_at)").eq("user_id", data.user.id).order("joined_at", { ascending: true });
+  const groups = (memberships || []).flatMap((row) => row.groups ? [row.groups as unknown as GroupSummary] : []);
+  return <AppFrame groups={groups} user={{ email: data.user.email, name: data.user.user_metadata?.display_name }}>{children}</AppFrame>;
 }

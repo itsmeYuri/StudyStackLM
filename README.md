@@ -10,7 +10,7 @@ StudyStackLM is a collaborative study workspace that turns shared class lessons 
 4. Apply migrations with `npx supabase db reset` locally or `npx supabase db push` when linked.
 5. Start the app with `npm run dev`.
 
-Without credentials, the application runs its interactive Biology demo. With Supabase configured, authentication, groups, uploads, drafts, and persistence use the production backend.
+StudyStackLM requires Supabase credentials for authentication, groups, uploads, drafts, and persistent study activity. It does not substitute demo content when the backend is unavailable.
 
 ## Deploy to Vercel
 

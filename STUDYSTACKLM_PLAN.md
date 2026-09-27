@@ -1,4 +1,4 @@
-# StudyStackLM — Product and Engineering Plan
+# StudyStackLM â€” Product and Engineering Plan
 
 ## 1. Product definition
 
@@ -296,7 +296,7 @@ Never ask the model to grade multiple-choice or true/false answers. Grade these 
 
 | Type | Authoring rules | Grading rules |
 |---|---|---|
-| Multiple choice | 3–5 plausible options, one correct answer by default, no clueing language | Exact option ID match |
+| Multiple choice | 3â€“5 plausible options, one correct answer by default, no clueing language | Exact option ID match |
 | True/false | One unambiguous claim; explanation must correct a false statement | Exact boolean match |
 | Fill in the blank | One meaningful blank; store canonical answer and accepted variants | Normalize case, whitespace, punctuation, and approved variants; do not use unrestricted semantic grading for official score |
 | Enumeration | State required item count and whether order matters; store acceptable item set and aliases | Match normalized items, remove duplicates, award configured partial credit |
@@ -329,19 +329,19 @@ Prefer typed server actions for first-party form mutations and route handlers fo
 
 Representative endpoints:
 
-- `POST /api/groups` — create group and owner membership transaction.
-- `POST /api/groups/:id/invites` — create or rotate invitation.
-- `POST /api/invites/:token/join` — validate and join.
-- `POST /api/sources/init-upload` — create source and signed upload target.
-- `POST /api/sources/:id/complete-upload` — verify object and enqueue processing.
-- `POST /api/materials/generate` — validate request and enqueue generation.
-- `GET /api/jobs/:id` — fallback job status; Realtime is the primary live channel.
-- `PATCH /api/materials/:id` — edit a draft with optimistic concurrency.
-- `POST /api/materials/:id/publish` — validate completeness and publish.
-- `POST /api/materials/:id/attempts` — create immutable attempt snapshot.
-- `PATCH /api/attempts/:id/answers/:questionId` — autosave response.
-- `POST /api/attempts/:id/submit` — transactionally grade and finalize.
-- `POST /api/reports` — report generated content.
+- `POST /api/groups` â€” create group and owner membership transaction.
+- `POST /api/groups/:id/invites` â€” create or rotate invitation.
+- `POST /api/invites/:token/join` â€” validate and join.
+- `POST /api/sources/init-upload` â€” create source and signed upload target.
+- `POST /api/sources/:id/complete-upload` â€” verify object and enqueue processing.
+- `POST /api/materials/generate` â€” validate request and enqueue generation.
+- `GET /api/jobs/:id` â€” fallback job status; Realtime is the primary live channel.
+- `PATCH /api/materials/:id` â€” edit a draft with optimistic concurrency.
+- `POST /api/materials/:id/publish` â€” validate completeness and publish.
+- `POST /api/materials/:id/attempts` â€” create immutable attempt snapshot.
+- `PATCH /api/attempts/:id/answers/:questionId` â€” autosave response.
+- `POST /api/attempts/:id/submit` â€” transactionally grade and finalize.
+- `POST /api/reports` â€” report generated content.
 
 Every mutation validates the session, input schema, membership, role, entity state, and idempotency key where retries are possible.
 
@@ -386,7 +386,7 @@ Feature code should depend on domain functions such as `createGroup`, `publishMa
 
 ## 15. Build sequence
 
-### Phase 0 — Foundation
+### Phase 0 â€” Foundation
 
 - Create Next.js TypeScript project with linting and formatting.
 - Create Supabase local project and migrations.
@@ -396,7 +396,7 @@ Feature code should depend on domain functions such as `createGroup`, `publishMa
 
 Exit criteria: preview deployment builds; local Supabase reset and seed work from a clean checkout.
 
-### Phase 1 — Authentication and groups
+### Phase 1 â€” Authentication and groups
 
 - Implement authentication and onboarding.
 - Create profiles, groups, memberships, and invitations.
@@ -405,7 +405,7 @@ Exit criteria: preview deployment builds; local Supabase reset and seed work fro
 
 Exit criteria: two test users can create and join one private group; neither can access a different group's data.
 
-### Phase 2 — Source library
+### Phase 2 â€” Source library
 
 - Create private storage buckets and signed upload flow.
 - Implement source list, detail, status, archive, and retry.
@@ -414,7 +414,7 @@ Exit criteria: two test users can create and join one private group; neither can
 
 Exit criteria: supported files become searchable, page-addressable sources; malformed files fail safely.
 
-### Phase 3 — Generation and editor
+### Phase 3 â€” Generation and editor
 
 - Implement generation wizard and job progress.
 - Add retrieval, structured generation, validation, and citations.
@@ -423,7 +423,7 @@ Exit criteria: supported files become searchable, page-addressable sources; malf
 
 Exit criteria: a real lesson produces editable, cited material with no dangling citations or invalid question structures.
 
-### Phase 4 — Study modes
+### Phase 4 â€” Study modes
 
 - Build reviewer reader and slide player.
 - Build accessible flashcard study flow and progress.
@@ -432,7 +432,7 @@ Exit criteria: a real lesson produces editable, cited material with no dangling 
 
 Exit criteria: each question type grades correctly; another group member can study the published material while attempts remain private.
 
-### Phase 5 — Production hardening
+### Phase 5 â€” Production hardening
 
 - Add quotas, rate limits, file validation, retry policies, and idempotency.
 - Add accessibility, responsive, performance, and empty/error-state passes.
@@ -560,6 +560,6 @@ Avoid public leaderboards or engagement mechanics that reward speed over learnin
 
 ## 22. Recommended launch order
 
-Build and release in a closed alpha with 3–5 real study groups. Give them one complete path—PDF/PPTX to flashcards and mixed quiz—before expanding every generator. Observe failed uploads, edits made before publishing, disputed grading, and where citations are opened. Use that evidence to refine extraction and generation contracts, then open the remaining reviewer and slide-deck modes to a larger beta.
+Build and release in a closed alpha with 3â€“5 real study groups. Give them one complete pathâ€”PDF/PPTX to flashcards and mixed quizâ€”before expanding every generator. Observe failed uploads, edits made before publishing, disputed grading, and where citations are opened. Use that evidence to refine extraction and generation contracts, then open the remaining reviewer and slide-deck modes to a larger beta.
 
 The plan describes the complete first release. The smartest implementation order still concentrates early testing on the hardest product truth: whether real lesson files can reliably become cited questions students trust.

@@ -13,9 +13,9 @@ const formats = [
   { id: "slide_deck", label: "Slide deck", icon: Presentation, description: "A condensed presentation" },
 ];
 
-export function GenerationWizard({ groupId, sources }: { groupId: string; sources: SourceSummary[] }) {
+export function GenerationWizard({ groupId, sources, initialFormat = "quiz", initialSourceId }: { groupId: string; sources: SourceSummary[]; initialFormat?: string; initialSourceId?: string }) {
   const router = useRouter();
-  const [format, setFormat] = useState("quiz"); const [count, setCount] = useState(10); const [difficulty, setDifficulty] = useState("mixed"); const [selected, setSelected] = useState(sources.map((s) => s.id)); const [loading, setLoading] = useState(false); const [error, setError] = useState("");
+  const [format, setFormat] = useState(formats.some((item) => item.id === initialFormat) ? initialFormat : "quiz"); const [count, setCount] = useState(10); const [difficulty, setDifficulty] = useState("mixed"); const [selected, setSelected] = useState(initialSourceId && sources.some((source) => source.id === initialSourceId) ? [initialSourceId] : sources.map((source) => source.id)); const [loading, setLoading] = useState(false); const [error, setError] = useState("");
   const [types, setTypes] = useState(["multiple_choice", "true_false", "fill_blank", "enumeration"]);
   async function generate() {
     setLoading(true); setError("");

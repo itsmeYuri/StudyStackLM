@@ -138,7 +138,7 @@ begin
   if auth.uid() is null then raise exception 'Authentication required'; end if;
   insert into public.groups(owner_id, name, subject, description) values(auth.uid(), name, subject, description) returning id into new_group;
   insert into public.group_members(group_id, user_id, role) values(new_group, auth.uid(), 'owner');
-  invite_code := upper(substr(encode(gen_random_bytes(6), 'hex'), 1, 6));
+  invite_code := upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 6));
   insert into public.group_invites(group_id, code, created_by, expires_at) values(new_group, invite_code, auth.uid(), now() + interval '30 days');
   return new_group;
 end; $$;

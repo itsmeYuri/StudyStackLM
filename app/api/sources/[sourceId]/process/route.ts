@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
-import { OfficeParser } from "officeparser";
+import { parseOffice, type SupportedFileType } from "officeparser";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
 
@@ -27,9 +27,16 @@ export async function POST(_: Request, { params }: { params: Promise<{ sourceId:
     const { data: blob, error: downloadError } = await admin.storage.from("source-files").download(source.storage_path);
     if (downloadError) throw downloadError;
     const extension = source.title.split(".").pop()?.toLowerCase();
-    const ast = await OfficeParser.parseOffice(new Uint8Array(await blob.arrayBuffer()), extension === "md" || extension === "txt" ? { fileType: extension } : undefined);
-    const generated = await ast.to("text");
-    const chunks = splitText(generated.value);
+    const supportedOfficeTypes = new Set(["pdf", "pptx", "docx"]);
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    let extractedText: string;
+    if (extension === "txt" || extension === "md") extractedText = new TextDecoder("utf-8").decode(bytes);
+    else if (!extension || !supportedOfficeTypes.has(extension)) throw new Error("Unsupported lesson format. Upload a PDF, PPTX, DOCX, TXT, or Markdown file.");
+    else {
+      const ast = await parseOffice(bytes, { fileType: extension as SupportedFileType });
+      extractedText = (await ast.to("text")).value;
+    }
+    const chunks = splitText(extractedText);
     if (!chunks.length) throw new Error("No readable text was found in this file.");
     let embeddings: number[][] = chunks.map(() => []);
     if (process.env.GEMINI_API_KEY) {

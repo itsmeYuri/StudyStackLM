@@ -15,8 +15,9 @@ export async function signUp(formData: FormData) {
   const supabase = await createClient();
   if (!supabase) redirect("/signup?error=Supabase is not configured");
   const email = String(formData.get("email"));
-  const { error } = await supabase.auth.signUp({ email, password: String(formData.get("password")), options: { data: { display_name: String(formData.get("name")) } } });
+  const { data, error } = await supabase.auth.signUp({ email, password: String(formData.get("password")), options: { data: { display_name: String(formData.get("name")) } } });
   if (error) redirect(`/signup?error=${encodeURIComponent(error.message)}`);
+  if (!data.session) redirect("/login?message=Check your email to confirm your account, then sign in.");
   redirect("/app");
 }
 
