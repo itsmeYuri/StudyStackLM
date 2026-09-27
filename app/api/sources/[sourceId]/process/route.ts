@@ -3,6 +3,7 @@ import { createClient as createAdminClient } from "@supabase/supabase-js";
 import { parseOffice, type SupportedFileType } from "officeparser";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
+import { isGroupOwner } from "@/lib/group-access";
 
 function splitText(text: string, maxLength = 2200) {
   const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
@@ -21,8 +22,9 @@ export async function POST(_: Request, { params }: { params: Promise<{ sourceId:
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL; const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!url || !serviceKey) return NextResponse.json({ error: "Server processing is not configured" }, { status: 503 });
     const admin = createAdminClient(url, serviceKey);
-    const { data: source, error: sourceError } = await admin.from("sources").select("*").eq("id", sourceId).eq("uploader_id", user.id).single();
+    const { data: source, error: sourceError } = await admin.from("sources").select("*").eq("id", sourceId).single();
     if (sourceError || !source) return NextResponse.json({ error: "Source not found" }, { status: 404 });
+    if(!await isGroupOwner(sessionClient!,source.group_id,user.id))return NextResponse.json({error:"Only the group owner can process sources."},{status:403});
     await admin.from("sources").update({ status: "processing", error_code: null }).eq("id", sourceId);
     const { data: blob, error: downloadError } = await admin.storage.from("source-files").download(source.storage_path);
     if (downloadError) throw downloadError;

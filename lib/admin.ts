@@ -1,0 +1,3 @@
+import { createClient as createAdminClient } from "@supabase/supabase-js";
+import { createClient } from "@/lib/supabase/server";
+export async function requireAdmin(){const session=await createClient();const{data:{user}}=await session!.auth.getUser();const allowed=(process.env.ADMIN_EMAILS||"").split(",").map(v=>v.trim().toLowerCase());if(!user||!allowed.includes((user.email||"").toLowerCase()))return null;const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.SUPABASE_SERVICE_ROLE_KEY;if(!url||!key)return null;return{user,admin:createAdminClient(url,key,{auth:{persistSession:false}})}}

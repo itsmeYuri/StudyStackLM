@@ -3,6 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { generatedMaterial } from "@/lib/study-schema";
+import { isGroupOwner } from "@/lib/group-access";
 
 const requestSchema = z.object({ groupId: z.string(), format: z.enum(["reviewer", "flashcards", "quiz", "practice_test", "slide_deck"]), count: z.number().int().min(3).max(50), difficulty: z.string(), sourceIds: z.array(z.string()).min(1), questionTypes: z.array(z.string()).default([]) });
 
@@ -49,6 +50,7 @@ export async function POST(request: Request) {
     const { data: { user } } = supabase ? await supabase.auth.getUser() : { data: { user: null } };
     if (!process.env.GEMINI_API_KEY) return NextResponse.json({ error: "Gemini is not configured. Add GEMINI_API_KEY to the server environment." }, { status: 503 });
     if (!supabase || !user) return NextResponse.json({ error: "Sign in to generate material." }, { status: 401 });
+    if(!await isGroupOwner(supabase,input.groupId,user.id))return NextResponse.json({error:"Only the group owner can generate study materials."},{status:403});
       const { data: chunks, error } = await supabase.from("source_chunks").select("id, content, page_number").in("source_id", input.sourceIds).limit(80);
       if (error) throw error;
       const context = (chunks || []).map((chunk) => `[${chunk.id}] Page/slide ${chunk.page_number}: ${chunk.content}`).join("\n\n");
