@@ -8,3 +8,6 @@ coverage
 .impeccable/review
 *.tsbuildinfo
 .artifacts/
+
+.vercel
+.env*
